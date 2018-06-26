@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>藏馆介绍_雜·書舘：大型私立公益图书馆</title>
+<link href="css/yuyue.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.11.0.min.js"></script>
+<!--这是日历样式表-->
+<link href="js/jquery-ui.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.8.1.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/dateinput-ch-ZN.js"></script>
+<link href="js/red-datepicker.css" rel="stylesheet">
+</head>
+<body>
+<div class="top">
+  <div class="top_container">
+    <div class="top_container_left">
+      <a href="index.html"><img src="img/logo.jpg" width="200" height="62" alt=""/></a>
+    </div>
+    <div class="top_container_right">
+      <a href="index.html" target="_blank" class="opennew">首 页</a>
+      <a href="yuyue.html" target="_blank" class="opennew now">我要预约</a>
+      <a href="lib_intro.html" target="_blank" class="opennew">藏馆介绍</a>
+      <a href="dongtai.html" target="_blank" class="opennew">书馆动态</a>
+    </div>
+  </div>
+</div>
+
+<div class="bg_pic">
+  <div class="container">
+    <div class="bg_pic_intro left">
+      <img src="img/name2.png" width="198" height="63" alt=""/>
+      <p>雜·書舘设有国学馆及新书馆两大馆区。</p>
+      <p>您也可以选择电话预约</p>
+      <p>预约电话：010-8430 8727</p>  
+    </div>
+    <div class="order_container right">
+      <div class="tit">
+        <a class="now left" href="javascript:void(0);" onClick="myFunction()">
+          <span></span>
+          新书馆
+        </a>
+        <a class="right" href="javascript:void(0);" onClick="myFunction()">
+          <span></span>
+          国学馆
+        </a>
+      </div>
+      <script>
+		 $(document).ready(function(e) {
+            $(".order_container .tit a.right").click(function(){
+				$(".order_container .tit a.right").addClass("now");
+				$(".order_container .tit a.left").removeClass("now");
+				$(".new_lib .tit2 span").text("国学馆");
+				$("form").removeClass("form1");
+				$("form").addClass("form2");
+				});
+			$(".order_container .tit a.left").click(function(){
+				$(".order_container .tit a.left").addClass("now");
+				$(".order_container .tit a.right").removeClass("now");
+				$(".new_lib .tit2 span").text("新书馆");
+				$("form").removeClass("form2");
+				$("form").addClass("form1");
+				});
+        });
+      </script>
+      <div class="new_lib">
+        <form action="FormAction/insert.jsp" method="post" class="">
+        <div class="red tit2">
+                             我要预约
+          <span>新书馆</span>
+        </div>
+        <div class="input_box">
+          <div class="left_tit left">姓名</div>
+          <div class="text_box left">
+            <!--<span class="con">请输入真实姓名</span>-->
+            <input id="model-userName" name="userName" type="text" placeholder="请输入真实姓名">
+          </div>
+        </div>
+        <div class="error_box" id="error1">&nbsp;</div>
+        <script>
+		$(document).ready(function(e) {
+				$("#model-userName").blur(function(){
+					if(this.value==""){
+						$("#error1").text("请输入您的姓名");
+						}else if(this.value.length<2){
+							$("#error1").text("姓名长度不能小于2个字符");
+							}else{
+								$("#error1").html("&nbsp;");
+								}
+					})
+        });
+		</script>
+        <div class="input_box">
+          <div class="left_tit left">身份证号</div>
+          <div class="text_box left">
+            <!--<span class="con">请输入身份证号码</span>-->
+            <input id="model-identityNum" name="identityNum" type="text" placeholder="请输入身份证号码">
+          </div>
+        </div>
+        <div class="error_box visible" id="error2">&nbsp;</div>
+        <script>
+		$(document).ready(function(e) {
+				$("#model-identityNum").blur(function(){
+					if(this.value==""){
+						$("#error2").text("请输入您的身份证号");
+						}else if(this.value.length!=18){
+							$("#error2").text("您的身份证号有误");
+							}else{
+								$("#error2").html("&nbsp;");
+								}
+					})
+        });
+		</script>
+        <div class="input_box">
+          <div class="left_tit left">手机号码</div>
+          <div class="text_box left">
+            <!--<span class="con">请输入您的手机号码</span>-->
+            <input id="model-phoneNum" name="phoneNum" type="text" placeholder="请输入您的手机号码">
+          </div>
+        </div>
+        <div class="error_box visible" id="error3">&nbsp;</div>
+        <script>
+		$(document).ready(function(e) {
+				$("#model-phoneNum").blur(function(){
+					if(this.value==""){
+						$("#error3").text("请输入您的手机号");
+						}else if(this.value.length!=11){
+							$("#error3").text("您的手机号有误");
+							}else{
+								$("#error3").html("&nbsp;");
+								}
+					})
+        });
+		</script>
+        <div class="input_box">
+          <div class="left_tit left">日期</div>
+          <div class="text_box left datebox">
+            <a href="javascript:" class="date_ico"></a>
+            <!--<span class="con">请选择到馆日期</span>-->
+            <input id="model-arrivalDate" name="arrivalDate" type="text" placeholder="请选择到馆日期">
+          </div>
+          <script>
+		   $(document).ready(function() {   
+               $("#model-arrivalDate").datepicker({
+				   }); //绑定输入框
+	       }); 
+		  </script>
+        </div>
+        <div class="btn_box">
+          <input type="submit" value="提交">
+        </div>
+        </form>
+        <div class="chaxun">
+          <a href="guanli.html" class="">管理员</a>
+          <a href="chaxun.html">预约查询</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main">
+<div class="main_container">
+   <h2 class="span mt_40 mb_30">
+     <span>服务须知</span>
+   </h2>
+   <p>
+    1.
+    本馆为公益性图书馆，对社会各界人士免费开放。<br/>
+
+    2.
+    由于接待能力有限，入馆借阅需提前预约，预约截止时限为到访前一日18：00，每日接待上限为200人。已预约的读者需 凭身份证登记入馆。限于条件，未经预约恕无法接待。<br/>
+
+    3.
+    入馆阅读书友，须遵守相关规定。违反规定者，本馆将不再接受预约。<br/>
+
+    4.
+    国学馆实行闭架借阅制度，书友在本馆目录中检索书目并提交借阅单，由工作人员提取书刊资料，在指定位置阅读，阅毕归还，每次一本。<br/>
+    一层名人手稿信札档案一馆、二层名人手稿信札档案二馆仅向特定读者开放。<br/>
+    新书馆实行开架借阅制度，读者自由取阅。<br/>
+
+    5.
+    为保证文献安全，各馆内均装有监控及红外报警设备，给您带来的不便敬请谅解。<br/>
+
+    6.
+    馆内请勿自带饮食，本馆免费提供茶饮。<br/>
+
+    7.
+    请妥善保管自带小件贵重物品，一般个人物品请寄放于免费存包处。<br/>
+
+    8.
+    请爱护馆内图书报刊及设施设备，请勿将馆内物品带出。<br/>
+
+    9.
+    不得携带宠物、易燃易爆及易腐蚀性物品进馆；不要在馆内吸烟、用火。入馆请将手机等通讯设备置于静音状态，请勿喧 哗，以免干扰其他读者。<br/>
+
+    10.
+    本馆的基本陈列允许拍照留念，所有图书资料不许复制和拍照。<br/>
+
+    11.
+    本馆查阅、抄录、阅读、参观均为免费服务项目，有关专题出版服务与科研服务项目不在本馆进行，请与孔网书友古旧书 交流中心联系。<br/>
+
+    12.
+    本馆开放时间为10:00-17:00，每周二闭馆休整。如因特殊情况不能对外开放，本馆将提前通知，并联系已预约的书友改定时间。感谢理解。<br/>
+   </p>
+   <p class="txt_c">欢迎各界书友光临！</p>
+   <h2 class="span2">
+     <span>联系我们</span>
+   </h2>
+   <p>
+   <strong>联系方式</strong>
+   <br/>
+   预约电话：010-84308727
+   <br/>
+   <br/>
+   <strong>交通路线</strong>
+   <br/>
+   公交：地铁15号线马泉营B出口，沿马泉营西路向北240米，路口左转向西800米，丁字路口右侧
+   <br/>
+   自驾：导航至“杂书馆”（北京市朝阳区崔各庄乡何各庄村328号红厂设计创意产业园）
+   </p>
+   <h2 class="span3">
+     <span>联系我们</span>
+   </h2>
+</div>
+</div>
+<div class="footer">
+  <div class="footer_container">
+    <div class="footer_container_left">
+      <ul>
+        <li>
+          <div class="wx_container">
+            <img src="img/wx.jpg" width="148" height="151" alt=""/>
+          </div>
+          <div class="red_bg_container">
+            <span class="red_bg">微信公众账号</span>
+          </div>
+        </li>
+        <li class="last">
+          <div class="wb_container">
+            <a href="#"><img src="img/wb.jpg" width="148" height="151" alt=""/> </a>
+          </div>
+          <div class="red_bg_container right">
+            <span class="red_bg">微 博 账 号</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="footer_container_right">
+      <p><strong>开馆时间：</strong></p>
+      <p>开放时间为10:00-17:00，每周二闭馆休整</p>
+      <p><strong>交通路线：</strong></p>
+      <p>公交：地铁15号线马泉营B出口，沿马泉营西路向北240米，路口左转向西800米，丁字路口右侧</p>
+      <p>自驾：导航至“杂书馆”（北京市朝阳区崔各庄乡何各庄村328号红厂设计创意产业园）</p>
+      <p><strong>预约电话：</strong></p>
+      <p>010-84308727</p>
+    </div>
+    <div class="line"></div>
+    <div class="beian">
+      <p>
+      Copyright©  雜•書舘网  2015 - 2017 , All  Rights  Reserved  
+      </p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

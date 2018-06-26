@@ -1,0 +1,1 @@
+document.write("&nbsp;<a class=\"\" href=\"/dongtai/ShowArticle.asp?ArticleID=1\" title=\"雜·談|关于本周六讲座，我只想说，这会是一个你不知道的古埃及\" target=\"_self\"><b>雜·談|关于本周六讲座，我只想说…</b></a>&nbsp;(<font color=\"red\">06-23</font>，15)<br />");

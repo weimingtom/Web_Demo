@@ -1,0 +1,1 @@
+document.write("<li>没有推荐书馆动态</li>");
